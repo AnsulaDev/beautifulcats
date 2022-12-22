@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/beautifulcats/static/css/main.fae314b5.css",
+    "main.js": "/beautifulcats/static/js/main.182bc2ac.js",
+    "static/js/787.54906ef9.chunk.js": "/beautifulcats/static/js/787.54906ef9.chunk.js",
+    "static/media/Candy Shop Black.woff": "/beautifulcats/static/media/Candy Shop Black.d19852a3944dbaa0c85c.woff",
+    "index.html": "/beautifulcats/index.html",
+    "main.fae314b5.css.map": "/beautifulcats/static/css/main.fae314b5.css.map",
+    "main.182bc2ac.js.map": "/beautifulcats/static/js/main.182bc2ac.js.map",
+    "787.54906ef9.chunk.js.map": "/beautifulcats/static/js/787.54906ef9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fae314b5.css",
+    "static/js/main.182bc2ac.js"
+  ]
+}
