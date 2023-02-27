@@ -1,16 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider} from 'react-redux';
-import {createStore,applyMiddleware} from 'redux'
+import {createStore,applyMiddleware, combineReducers} from 'redux'
 //import {configureStore} from '@reduxjs/toolkit';
 import { createLogger } from 'redux-logger';
+import thunk from 'redux-thunk'
 import './index.css';
 import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
-import { searchCats } from './reducer';
+import { searchCats, requestCats } from './reducer';
 
 const logger = createLogger();
-const store = createStore(searchCats, applyMiddleware(logger))
+const rootReducer = combineReducers({searchCats, requestCats});
+const store = 
+createStore(rootReducer, applyMiddleware(thunk,logger))
 //const store = configureStore({reducer:searchCats}, applyMiddleware(logger))
 
 

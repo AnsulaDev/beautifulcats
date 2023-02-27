@@ -7,13 +7,16 @@ import Scroll from '../components/scroll/scroll.component';
 import { Component } from 'react';
 import './App.css';
 
-import { setSearchField } from '../actions';
+import { setSearchField , requestCats} from '../actions';
 
 
 //mapStateToProps is just tell me what state, what piece of state I need to listen to, and send down as props
 const mapStateToProps = state => {
   return{
-    searchField: state.searchField
+    searchField: state.searchCats.searchField,
+    cats: state.requestCats.cats,
+    isPending: state.requestCats.isPending,
+    error: state.requestCats.error
 
   }
 }
@@ -21,33 +24,25 @@ const mapStateToProps = state => {
 //mapDispatchToProps says hey tell me what props I should listen to that are actions that need to get dispatched.
 const mapDispatchToProps = (dispatch) => {
   return{
-    onSearchChange: (event) => dispatch(setSearchField(event.target.value))
+    onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+    onRequestCats: () => dispatch(requestCats())
+
   }
 }
 
 class App extends Component{
-  constructor(){
-    super()
-    this.state={
-      cats:[]
-    }
-    }
-
 
     componentDidMount(){
-      fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(users => {this.setState({cats: users})});
+      this.props.onRequestCats();
     }
 
 
     render(){
-      const { cats } = this.state;
-      const { searchField, onSearchChange} = this.props;
+      const { searchField, onSearchChange, cats, isPending} = this.props;
       const filteredCats = cats.filter(cat =>{
         return cat.name.toLowerCase().includes(searchField.toLowerCase());
       })
-      return !cats.length ?
+      return isPending?
           <h1>Loading</h1> :
         (
           <div className="App">
